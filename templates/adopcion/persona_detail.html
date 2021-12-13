@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+{% block title %} DETALLE-PERSONA {% endblock %}
+{% block content %}
+<div id="verP">
+ <h3>Información del adoptante</h3>
+<form method="post">
+	{% csrf_token %}
+	<div class="row">
+		<div class="col-md-8 col-md-offset-0">
+			<div class="form-group">
+                <label for="#">#</label>
+				<input value="{{object.id}}">
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-0">
+			<div class="form-group">
+				<label for="#">Nombre completo</label>
+				<input value="{{ object.nombre }} {{ object.apellidos }}">
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-0">
+			<div class="form-group">
+				<label for="#">Edad</label>
+				<input value="{{ object.edad }}">
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-0">
+			<div class="form-group">
+				<label for="#">Telefono</label>
+				<input value="{{ object.telefono }}">
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-0">
+			<div class="form-group">
+				<label for="#">Email</label>
+				<input value="{{ object.email }}">
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-0">
+			<div class="form-group">
+				<label for="#">Domicilio</label>
+				<input value="{{object.domicilio}}">
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8 col-md-offset-1">
+			<div class="form-group">
+                <a class="btn btn-default" href="javascript:history.back();">Regresar</a>
+			</div>
+		</div>
+</form>
+</div>
+{% endblock %}
+{% block extrajs %}
+    <script type="text/javascript">
+        $("#verP :input").prop("disabled", true);
+    </script>
+{% endblock %}

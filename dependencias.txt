@@ -1,0 +1,12 @@
+python = 2.7
+django = 1.9.6
+pillow
+psicopg2
+Cambiar contraseña usurio postgres (por defecnto):
+sudo -u postgres psql template1
+ALTER USER postgres PASSWORD "newPassword"
+\q
+Crear la base de datos:
+sudo -u postgres createdb refugio
+./runserver makemigrations
+./runserver migrate

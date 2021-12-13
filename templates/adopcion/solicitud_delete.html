@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block title %} ELIMINAR-SOLICITUD {% endblock %}
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	<h3>¿Desea eliminar la solicitud de
+        {% if object %}
+            {{ object.persona.nombre }} {{ object.persona.apellidos }}?
+        {% elif solicitud %}
+            {{ solicitud.persona.nombre }} {{ solicitud.persona.apellidos }}?
+        {% endif %}</h3>
+	<button class="btn btn-danger" type="submit">Sí, eliminar</button>
+	<a class= "btn btn-default" href="
+    {% if object %}
+        {% url 'adopcion:solicitud_listarclase' %}
+    {% elif solicitud %}
+        {% url 'adopcion:solicitud_listarfuncion' %}
+    {% endif %}">Cancelar</a>
+</form>
+{% endblock %}

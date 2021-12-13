@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% block title %} LISTA-VACUNAS {% endblock %}
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Nombre</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for vacuna in object_list %}
+        <tr>
+            <td>{{ vacuna.id }}</td>
+            <td>{{ vacuna.nombre }}</td>
+            <td>
+                <a class="btn btn-primary" href="{% url 'mascota:vacuna_editarclase' vacuna.id %}" >Editar</a>
+                <a class="btn btn-danger" href="{% url 'mascota:vacuna_eliminarclase' vacuna.id %}" >Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+        {% elif vacunas %}
+        {% for vacuna in vacunas %}
+        <tr>
+            <td>{{ vacuna.id }}</td>
+            <td>{{ vacuna.nombre }}</td>
+            <td>
+                <a class="btn btn-primary" href="{% url 'mascota:vacuna_editarfuncion' vacuna.id %}" >Editar</a>
+                <a class="btn btn-danger" href="{% url 'mascota:vacuna_eliminarfuncion' vacuna.id %}" >Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No Hay Registros de Mascotas</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

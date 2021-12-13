@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% block title %} FORMULARIO-VACUNAS {% endblock %}
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}

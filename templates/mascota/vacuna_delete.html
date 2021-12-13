@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block title %} ELIMINAR-MASCOTA {% endblock %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h3>¿Desea eliminar el registro de
+        {% if object %}
+            {{ object.nombre }}?
+        {% elif vacuna %}
+            {{ vacuna.nombre }}?
+        {% endif %}</h3>
+    <button class="btn btn-danger" type="submit">Sí, eliminar</button>
+    <a class="btn btn-default" href="
+    {% if object %}
+        {% url 'mascota:vacuna_listarclase' %}
+    {% elif vacuna %}
+        {% url 'mascota:mascota_listarfuncion' %}
+    {% endif %}">Cancelar</a>
+</form>
+{% endblock %}

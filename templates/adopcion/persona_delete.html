@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% block title %} ELIMINAR-SOLICITUD {% endblock %}
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	<h3>¿Desea eliminar la solicitud de {{ object.nombre }} {{ object.apellidos }}? </h3>
+	<button class="btn btn-danger" type="submit">Sí, eliminar</button>
+	<a class= "btn btn-default" href="{% url 'adopcion:persona_listarclase' %}">Cancelar</a>
+</form>
+{% endblock %}

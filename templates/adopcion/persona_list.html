@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+{% block title %} LISTA-SOLICITUDES {% endblock %}
+{% block content %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>No. Persona</td>
+			<td>Nombre completo</td>
+			<td>Edad</td>
+			<td>Email</td>
+			<td>Acciones</td>
+		</tr>
+
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for persona in object_list %}
+		<tr>
+			<td>{{ persona.id }}</td>
+			<td>{{ persona.nombre }} {{persona.apellidos}}</td>
+			<td>{{ persona.edad }}</td>
+			<td>{{ persona.telefono }}</td>
+
+			<td>
+				<a class="btn btn-danger" href=" {% url 'adopcion:persona_eliminarclase' persona.id %}">Eliminar</a>
+				<a class="btn btn-info" href=" {% url 'adopcion:persona_detailclase' persona.id %}">Detalle</a>
+			</td>
+		</tr>
+		{% endfor %}
+
+        {% elif personas %}
+		{% for persona in personas %}
+		<tr>
+			<td>{{ persona.id }}</td>
+			<td>{{ persona.nombre }} {{persona.apellidos}}</td>
+			<td>{{ persona.edad }}</td>
+			<td>{{ persona.telefono }}</td>
+
+			<td>
+				<a class="btn btn-danger" href=" {% url 'adopcion:persona_eliminarfuncion' persona.id %}">Eliminar</a>
+				<a class="btn btn-info" href=" {% url 'adopcion:persona_detailfuncion' persona.id %}">Detalle</a>
+			</td>
+		</tr>
+		{% endfor %}
+
+		{% else %}
+		<h1>No hay registros de personas</h1>
+		{% endif %}
+	</tbody>
+</table>
+
+{% endblock%}
