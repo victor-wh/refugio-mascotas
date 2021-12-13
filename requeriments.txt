@@ -1,0 +1,4 @@
+Django==1.9.6
+django-file-resubmit==0.5.2
+Pillow==6.2.2
+psycopg2==2.8.6
