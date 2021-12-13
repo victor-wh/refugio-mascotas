@@ -16,9 +16,13 @@
     pip install  -r requeriments.txt
 ## Paso 6: Crear base de datos
     sudo -u postgres createdb refugio
-## Paso 7: Cambiar contraseña del usuario postgres (por defecto):
+## Paso 7: Crear usuario y dar privilegios en postgresql:
     sudo -u postgres psql template1
-    ALTER USER postgres PASSWORD "newPassword"
+    CREATE USER refugio WITH PASSWORD 'password';
+    GRANT ALL PRIVILEGES ON DATABASE refugio to refugio;
+    \c refugio
+    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO refugio;
+    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO refugio;
 #### para salir usar:
     \q
 ## Paso 8: Crear migraciones desde la carpeta del proyecto
