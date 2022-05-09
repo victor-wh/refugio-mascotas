@@ -16,8 +16,8 @@
             <td>{{ vacuna.id }}</td>
             <td>{{ vacuna.nombre }}</td>
             <td>
-                <a class="btn btn-primary" href="{% url 'mascota:vacuna_editarclase' vacuna.id %}" >Editar</a>
-                <a class="btn btn-danger" href="{% url 'mascota:vacuna_eliminarclase' vacuna.id %}" >Eliminar</a>
+                <a class="btn btn-primary" href="{% url 'vacuna_editarclase' vacuna.id %}" >Editar</a>
+                <a class="btn btn-danger" href="{% url 'vacuna_eliminarclase' vacuna.id %}" >Eliminar</a>
             </td>
         </tr>
         {% endfor %}
@@ -28,8 +28,8 @@
             <td>{{ vacuna.id }}</td>
             <td>{{ vacuna.nombre }}</td>
             <td>
-                <a class="btn btn-primary" href="{% url 'mascota:vacuna_editarfuncion' vacuna.id %}" >Editar</a>
-                <a class="btn btn-danger" href="{% url 'mascota:vacuna_eliminarfuncion' vacuna.id %}" >Eliminar</a>
+                <a class="btn btn-primary" href="{% url 'vacuna_editarfuncion' vacuna.id %}" >Editar</a>
+                <a class="btn btn-danger" href="{% url 'vacuna_eliminarfuncion' vacuna.id %}" >Eliminar</a>
             </td>
         </tr>
         {% endfor %}

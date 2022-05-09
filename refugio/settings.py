@@ -39,15 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mascota',
     'adopcion',
+    'rest_framework',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -72,6 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'refugio.wsgi.application'
 
+LOCAL_DOMAIN = "127.0.0.1:8000"
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -87,6 +88,7 @@ DATABASES = {
     }
 }
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

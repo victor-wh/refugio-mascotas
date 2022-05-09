@@ -12,9 +12,9 @@
     <button class="btn btn-danger" type="submit">Sí, eliminar</button>
     <a class="btn btn-default" href="
     {% if object %}
-        {% url 'mascota:vacuna_listarclase' %}
+        {% url 'vacuna_listarclase' %}
     {% elif vacuna %}
-        {% url 'mascota:mascota_listarfuncion' %}
+        {% url 'mascota_listarfuncion' %}
     {% endif %}">Cancelar</a>
 </form>
 {% endblock %}

@@ -23,8 +23,8 @@
 			<td>{{ persona.telefono }}</td>
 
 			<td>
-				<a class="btn btn-danger" href=" {% url 'adopcion:persona_eliminarclase' persona.id %}">Eliminar</a>
-				<a class="btn btn-info" href=" {% url 'adopcion:persona_detailclase' persona.id %}">Detalle</a>
+				<a class="btn btn-danger" href=" {% url 'persona_eliminarclase' persona.id %}">Eliminar</a>
+				<a class="btn btn-info" href=" {% url 'persona_detailclase' persona.id %}">Detalle</a>
 			</td>
 		</tr>
 		{% endfor %}
@@ -38,8 +38,8 @@
 			<td>{{ persona.telefono }}</td>
 
 			<td>
-				<a class="btn btn-danger" href=" {% url 'adopcion:persona_eliminarfuncion' persona.id %}">Eliminar</a>
-				<a class="btn btn-info" href=" {% url 'adopcion:persona_detailfuncion' persona.id %}">Detalle</a>
+				<a class="btn btn-danger" href=" {% url 'persona_eliminarfuncion' persona.id %}">Eliminar</a>
+				<a class="btn btn-info" href=" {% url 'persona_detailfuncion' persona.id %}">Detalle</a>
 			</td>
 		</tr>
 		{% endfor %}

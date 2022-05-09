@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect
+import requests
+
+from django.conf import settings
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 
 from adopcion.models import Solicitud, Persona
 from adopcion.forms import SolicitudForm, PersonaForm
@@ -23,7 +26,7 @@ class SolicitudCreate(CreateView):
     template_name = 'adopcion/solicitud_form.html'
     form_class = SolicitudForm
     second_form_class = PersonaForm
-    success_url = reverse_lazy('adopcion:solicitud_listarclase')
+    success_url = reverse_lazy('solicitud_listarclase')
 
     def get_context_data(self, **kwargs):
         context = super(SolicitudCreate, self).get_context_data(**kwargs)
@@ -98,7 +101,6 @@ class PersonaDelete(DeleteView):
     success_url = reverse_lazy('adopcion:persona_listarclase')
 
 
-
 class PersonaDetail(DetailView):
     model = Persona
     template_name = 'adopcion/persona_detail.html'
@@ -109,14 +111,24 @@ def solicitud_list(request):
     contexto = {'solicitudes':solicitud}
     return render(request, 'adopcion/solicitud_list.html', contexto)
 
-def persona_detail(request, id_persona):
-    persona = Persona.objects.get(id=id_persona)
-    return render(request, 'adopcion/persona_detail.html', {'object':persona})
+
+def persona_detail(request, id_mascota):
+    local_domain = settings.LOCAL_DOMAIN  # localhost:8000
+    url = 'http://{0}{1}'.format(local_domain, reverse("api_mascota_persona_list_v2", args=[id_mascota]))
+    response = requests.get(url=url, cookies=request.COOKIES)
+    persona = []
+    if response.status_code == 200:
+        persona = response.json()
+    else:
+        print("NO TIENE SESSION INICIADA")
+    return render(request, 'adopcion/persona_detail.html', {'object': persona})
+
 
 def persona_list(request):
     persona = Persona.objects.all().order_by('id')
     contexto = {'personas': persona}
     return render(request, 'adopcion/persona_list.html', contexto)
+
 
 def persona_delete(request,id_persona):
     persona = Persona.objects.get(id=id_persona)
@@ -124,6 +136,7 @@ def persona_delete(request,id_persona):
         persona.delete()
         return redirect('adopcion:persona_listarfuncion')
     return render(request, 'adopcion/persona_delete.html', {'object':persona})
+
 
 def solicitud_delete(request,id_solicitud):
     solicitud = Solicitud.objects.get(id=id_solicitud)
@@ -133,6 +146,7 @@ def solicitud_delete(request,id_solicitud):
         #persona.delete()
         return redirect('adopcion:solicitud_listarfuncion')
     return render(request, 'adopcion/solicitud_delete.html', {'solicitud':solicitud})
+
 
 def solicitud_view(request):
     form = SolicitudForm(request.POST or None)
@@ -149,6 +163,7 @@ def solicitud_view(request):
     #     form = SolicitudForm()
     #     form2 = PersonaForm()
     return render(request, 'adopcion/solicitud_form.html', {'form':form, 'form2': form2})
+
 
 def solicitud_edit(request, id_solicitud):
     solicitud = Solicitud.objects.get(id=id_solicitud)

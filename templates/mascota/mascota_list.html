@@ -30,9 +30,9 @@
             </td>
             <td>{{ mascota.persona.nombre }} {{ mascota.persona.apellidos }}</td>
             <td>
-                <a class="btn btn-info" href="{% url 'adopcion:persona_detailclase' mascota.persona.id %}" >Ver Adoptante</a>
-                <a class="btn btn-primary" href="{% url 'mascota:mascota_editarclase' mascota.id %}" >Editar</a>
-                <a class="btn btn-danger" href="{% url 'mascota:mascota_eliminarclase' mascota.id %}" >Eliminar</a>
+                <a class="btn btn-info" href="{% url 'persona_detailfuncion' mascota.id %}" >Ver Adoptante</a>
+                <a class="btn btn-primary" href="{% url 'mascota_editarfuncion' mascota.id %}" >Editar</a>
+                <a class="btn btn-danger" href="{% url 'mascota_eliminarfuncion' mascota.id %}" >Eliminar</a>
             </td>
         </tr>
         {% endfor %}
@@ -46,15 +46,16 @@
             <td>{{ mascota.edad_aproximada }}</td>
             <td>{{ mascota.fecha_rescate }}</td>
             <td>
-            {% for vacuna in mascota.vacuna.values %}
+
+            {% for vacuna in mascota.vacuna %}
                 {{ vacuna.nombre }},
             {% endfor %}
             </td>
             <td>{{ mascota.persona.nombre }} {{ mascota.persona.apellidos }}</td>
             <td>
-                <a class="btn btn-info" href="{% url 'adopcion:persona_detailfuncion' mascota.persona_id %}" >Ver Adoptante</a>
-                <a class="btn btn-primary" href="{% url 'mascota:mascota_editarfuncion' mascota.id %}" >Editar</a>
-                <a class="btn btn-danger" href="{% url 'mascota:mascota_eliminarfuncion' mascota.id %}" >Eliminar</a>
+                <a class="btn btn-info" href="{% url 'persona_detailfuncion' mascota.id %}" >Ver Adoptante</a>
+                <a class="btn btn-primary" href="{% url 'mascota_editarfuncion' mascota.id %}" >Editar</a>
+                <a class="btn btn-danger" href="{% url 'mascota_eliminarfuncion' mascota.id %}" >Eliminar</a>
             </td>
         </tr>
         {% endfor %}

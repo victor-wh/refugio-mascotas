@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,18 +29,18 @@
                              <li class="dropdown">
                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mascotas C<span class="caret"></span></a>
                                  <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{% url 'mascota:mascota_crearclase' %}">Registrar mascota</a></li>
-                                    <li><a href="{% url 'mascota:mascota_listarclase' %}">Listar mascotas</a></li>
-                                    <li><a href="{% url 'mascota:vacuna_crearclase' %}">Registrar vacuna</a></li>
-                                    <li><a href="{% url 'mascota:vacuna_listarclase' %}">Listar vacunas</a></li>
+                                    <li><a href="{% url 'mascota_crearclase' %}">Registrar mascota</a></li>
+                                    <li><a href="{% url 'mascota_listarclase' %}">Listar mascotas</a></li>
+                                    <li><a href="{% url 'vacuna_crearclase' %}">Registrar vacuna</a></li>
+                                    <li><a href="{% url 'vacuna_listarclase' %}">Listar vacunas</a></li>
                                  </ul>
                              </li>
                              <li class="dropdown">
                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Adopciones C<span class="caret"></span></a>
                                  <ul class="dropdown-menu" role="menu">
-                                     <li><a href="{% url 'adopcion:solicitud_crearclase' %}">Solicitar</a></li>
-                                     <li><a href="{% url 'adopcion:solicitud_listarclase' %}">Listar solicitudes</a></li>
-                                     <li><a href="{% url 'adopcion:persona_listarclase' %}">Listar personas</a></li>
+                                     <li><a href="{% url 'solicitud_crearclase' %}">Solicitar</a></li>
+                                     <li><a href="{% url 'solicitud_listarclase' %}">Listar solicitudes</a></li>
+                                     <li><a href="{% url 'persona_listarclase' %}">Listar personas</a></li>
                                  </ul>
                              </li>
                          </ul>
@@ -48,18 +48,18 @@
                              <li class="dropdown">
                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mascotas F<span class="caret"></span></a>
                                  <ul class="dropdown-menu" role="menu">
-                                     <li><a href="{% url 'mascota:mascota_crearfuncion' %}">Registrar mascota</a></li>
-                                     <li><a href="{% url 'mascota:mascota_listarfuncion' %}">Listar mascotas</a></li>
-                                     <li><a href="{% url 'mascota:vacuna_crearfuncion' %}">Registrar vacuna</a></li>
-                                     <li><a href="{% url 'mascota:vacuna_listarfuncion' %}">Listar vacunas</a></li>
+                                     <li><a href="{% url 'mascota_crearfuncion' %}">Registrar mascota</a></li>
+                                     <li><a href="{% url 'mascota_listarfuncion' %}">Listar mascotas</a></li>
+                                     <li><a href="{% url 'vacuna_crearfuncion' %}">Registrar vacuna</a></li>
+                                     <li><a href="{% url 'vacuna_listarfuncion' %}">Listar vacunas</a></li>
                                  </ul>
                              </li>
                              <li class="dropdown">
                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Adopciones F<span class="caret"></span></a>
                                  <ul class="dropdown-menu" role="menu">
-                                     <li><a href="{% url 'adopcion:solicitud_crearfuncion' %}">Solicitar</a></li>
-                                     <li><a href="{% url 'adopcion:solicitud_listarfuncion' %}">Listar solicitudes</a></li>
-                                     <li><a href="{% url 'adopcion:persona_listarfuncion' %}">Listar personas</a></li>
+                                     <li><a href="{% url 'solicitud_crearfuncion' %}">Solicitar</a></li>
+                                     <li><a href="{% url 'solicitud_listarfuncion' %}">Listar solicitudes</a></li>
+                                     <li><a href="{% url 'persona_listarfuncion' %}">Listar personas</a></li>
                                  </ul>
                              </li>
                          </ul>

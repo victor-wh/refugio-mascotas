@@ -23,8 +23,8 @@
 			<td>{{ solicitud.razones }}</td>
 
 			<td>
-				<a class="btn btn-primary" href="{% url 'adopcion:solicitud_editarclase' solicitud.id %}">Editar</a>
-				<a class="btn btn-danger" href=" {% url 'adopcion:solicitud_eliminarclase' solicitud.id %}">Eliminar</a>
+				<a class="btn btn-primary" href="{% url 'solicitud_editarclase' solicitud.id %}">Editar</a>
+				<a class="btn btn-danger" href=" {% url 'solicitud_eliminarclase' solicitud.id %}">Eliminar</a>
 			</td>
 		</tr>
 		{% endfor %}
@@ -38,8 +38,8 @@
 			<td>{{ solicitud.razones }}</td>
 
 			<td>
-				<a class="btn btn-primary" href="{% url 'adopcion:solicitud_editarfuncion' solicitud.id %}">Editar</a>
-				<a class="btn btn-danger" href=" {% url 'adopcion:solicitud_eliminarfuncion' solicitud.id %}">Eliminar</a>
+				<a class="btn btn-primary" href="{% url 'solicitud_editarfuncion' solicitud.id %}">Editar</a>
+				<a class="btn btn-danger" href=" {% url 'solicitud_eliminarfuncion' solicitud.id %}">Eliminar</a>
 			</td>
 		</tr>
 		{% endfor %}
