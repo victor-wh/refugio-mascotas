@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% block title %} FORMULARIO-MASCOTAS {% endblock %}
 {% block content %}
-
+    <h4>MASCOTAS - {{ api_version }}</h4>
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% if form.instance.imagen.url or None%}

@@ -13,6 +13,15 @@
         <title>{% block title %} Document {% endblock %}</title>
 </head>
 <body>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <div class="container">
 {% block navbar %}
     <div class="bs-docs-section clearfix">
@@ -43,25 +52,58 @@
                                      <li><a href="{% url 'persona_listarclase' %}">Listar personas</a></li>
                                  </ul>
                              </li>
-                         </ul>
-                         <ul class="nav navbar-nav">
-                             <li class="dropdown">
-                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mascotas F<span class="caret"></span></a>
-                                 <ul class="dropdown-menu" role="menu">
-                                     <li><a href="{% url 'mascota_crearfuncion' %}">Registrar mascota</a></li>
-                                     <li><a href="{% url 'mascota_listarfuncion' %}">Listar mascotas</a></li>
-                                     <li><a href="{% url 'vacuna_crearfuncion' %}">Registrar vacuna</a></li>
-                                     <li><a href="{% url 'vacuna_listarfuncion' %}">Listar vacunas</a></li>
-                                 </ul>
-                             </li>
                              <li class="dropdown">
                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Adopciones F<span class="caret"></span></a>
                                  <ul class="dropdown-menu" role="menu">
                                      <li><a href="{% url 'solicitud_crearfuncion' %}">Solicitar</a></li>
                                      <li><a href="{% url 'solicitud_listarfuncion' %}">Listar solicitudes</a></li>
-                                     <li><a href="{% url 'persona_listarfuncion' %}">Listar personas</a></li>
+                                     <li><a href="{% url 'persona_listarfuncion' 'v1' %}">Listar personas</a></li>
                                  </ul>
                              </li>
+                         </ul>
+                         <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mascotas (Decorador)<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{% url 'mascota_crearfuncion' 'v1' %}">Registrar mascota</a></li>
+                                    <li><a href="{% url 'mascota_listarfuncion' 'v1' %}">Listar mascotas</a></li>
+                                    <li><a href="{% url 'vacuna_crearfuncion' %}">Registrar vacuna</a></li>
+                                    <li><a href="{% url 'vacuna_listarfuncion' %}">Listar vacunas</a></li>
+                                </ul>
+                            </li>
+                         </ul>
+                         <ul class="nav navbar-nav">
+                             <li class="dropdown">
+                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mascotas (APIView)<span class="caret"></span></a>
+                                 <ul class="dropdown-menu" role="menu">
+                                     <li><a href="{% url 'mascota_crearfuncion' 'v2' %}">Registrar mascota</a></li>
+                                     <li><a href="{% url 'mascota_listarfuncion' 'v2' %}">Listar mascotas</a></li>
+                                     <li><a href="{% url 'vacuna_crearfuncion' %}">Registrar vacuna</a></li>
+                                     <li><a href="{% url 'vacuna_listarfuncion' %}">Listar vacunas</a></li>
+                                 </ul>
+                             </li>
+                         </ul>
+                         <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mascotas (GenericView)<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{% url 'mascota_crearfuncion' 'v3' %}">Registrar mascota</a></li>
+                                    <li><a href="{% url 'mascota_listarfuncion' 'v3' %}">Listar mascotas</a></li>
+                                    <li><a href="{% url 'vacuna_crearfuncion' %}">Registrar vacuna</a></li>
+                                    <li><a href="{% url 'vacuna_listarfuncion' %}">Listar vacunas</a></li>
+                                </ul>
+                            </li>
+                         </ul>
+                         <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mascotas (ViewSet)<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{% url 'mascota_crearfuncion' 'v4' %}">Registrar mascota</a></li>
+                                    <li><a href="{% url 'mascota_listarfuncion' 'v4' %}">Listar mascotas</a></li>
+                                    <li><a href="{% url 'vacuna_crearfuncion' %}">Registrar vacuna</a></li>
+                                    <li><a href="{% url 'vacuna_listarfuncion' %}">Listar vacunas</a></li>
+                                </ul>
+                            </li>
                          </ul>
                          <ul class="nav navbar-nav navbar-right">
                              <li class="dropdown">

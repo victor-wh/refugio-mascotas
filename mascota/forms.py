@@ -1,5 +1,6 @@
 from django import forms
 
+from adopcion.models import Persona
 from mascota.models import Mascota, Vacuna
 
 
@@ -35,6 +36,7 @@ class MascotaForm(forms.ModelForm):
             'vacuna': forms.CheckboxSelectMultiple(),
         }
 
+
 class VacunaForm(forms.ModelForm):
 
     class Meta:
@@ -49,3 +51,13 @@ class VacunaForm(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs = {'class': 'form-control'}),
         }
+
+
+class MascotaFieldForm(forms.Form):
+    nombre = forms.CharField(max_length=50, required=False)
+    sexo = forms.CharField(max_length=30, required=False)
+    edad_aproximada = forms.IntegerField(required=False)
+    fecha_rescate = forms.DateField(required=False)
+    persona = forms.ModelChoiceField(required=False, queryset=Persona.objects.all())
+    vacuna = forms.ModelChoiceField(required=False, queryset=Vacuna.objects.all())
+    imagen = forms.ImageField(required=False)

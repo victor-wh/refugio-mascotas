@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 {% block title %} LISTA-MASCOTAS {% endblock %}
 {% block content %}
+<h4>MASCOTAS - {{ api_version }}</h4>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -30,9 +31,9 @@
             </td>
             <td>{{ mascota.persona.nombre }} {{ mascota.persona.apellidos }}</td>
             <td>
-                <a class="btn btn-info" href="{% url 'persona_detailfuncion' mascota.id %}" >Ver Adoptante</a>
-                <a class="btn btn-primary" href="{% url 'mascota_editarfuncion' mascota.id %}" >Editar</a>
-                <a class="btn btn-danger" href="{% url 'mascota_eliminarfuncion' mascota.id %}" >Eliminar</a>
+                <a class="btn btn-info" href="{% url 'persona_detailfuncion' api_version mascota.id %}" >Ver Adoptante</a>
+                <a class="btn btn-primary" href="{% url 'mascota_editarfuncion' api_version mascota.id %}" >Editar</a>
+                <a class="btn btn-danger" href="{% url 'mascota_eliminarfuncion' api_version mascota.id %}" >Eliminar</a>
             </td>
         </tr>
         {% endfor %}
@@ -46,16 +47,15 @@
             <td>{{ mascota.edad_aproximada }}</td>
             <td>{{ mascota.fecha_rescate }}</td>
             <td>
-
             {% for vacuna in mascota.vacuna %}
                 {{ vacuna.nombre }},
             {% endfor %}
             </td>
             <td>{{ mascota.persona.nombre }} {{ mascota.persona.apellidos }}</td>
             <td>
-                <a class="btn btn-info" href="{% url 'persona_detailfuncion' mascota.id %}" >Ver Adoptante</a>
-                <a class="btn btn-primary" href="{% url 'mascota_editarfuncion' mascota.id %}" >Editar</a>
-                <a class="btn btn-danger" href="{% url 'mascota_eliminarfuncion' mascota.id %}" >Eliminar</a>
+                <a class="btn btn-info" href="{% url 'persona_detailfuncion' api_version mascota.id %}" >Ver Adoptante</a>
+                <a class="btn btn-primary" href="{% url 'mascota_editarfuncion' api_version mascota.id %}" >Editar</a>
+                <a class="btn btn-danger" href="{% url 'mascota_eliminarfuncion' api_version mascota.id %}" >Eliminar</a>
             </td>
         </tr>
         {% endfor %}

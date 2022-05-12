@@ -1,3 +1,4 @@
+import json
 import requests
 
 from django.conf import settings
@@ -8,6 +9,10 @@ from django.urls import reverse_lazy
 
 from adopcion.models import Solicitud, Persona
 from adopcion.forms import SolicitudForm, PersonaForm
+
+# ViewSet
+from api.views.mascota_generic_views import MascotaPersonaListv3
+from api.views.mascota_vset_views import MascotaPersonaViewSet
 
 
 # Create your views here.
@@ -112,22 +117,26 @@ def solicitud_list(request):
     return render(request, 'adopcion/solicitud_list.html', contexto)
 
 
-def persona_detail(request, id_mascota):
-    local_domain = settings.LOCAL_DOMAIN  # localhost:8000
-    url = 'http://{0}{1}'.format(local_domain, reverse("api_mascota_persona_list_v2", args=[id_mascota]))
-    response = requests.get(url=url, cookies=request.COOKIES)
-    persona = []
-    if response.status_code == 200:
-        persona = response.json()
-    else:
-        print("NO TIENE SESSION INICIADA")
-    return render(request, 'adopcion/persona_detail.html', {'object': persona})
+def persona_detail(request, api_version, id_mascota):
+    instance = MascotaPersonaViewSet()
+    instance_persona = instance.retrieve(request=request, pk=id_mascota)
+    instance_persona = dict(instance_persona.data)
+    return render(request, 'adopcion/persona_detail.html', {'object': instance_persona})
 
 
-def persona_list(request):
+def persona_list(request, api_version):
     persona = Persona.objects.all().order_by('id')
-    contexto = {'personas': persona}
+    contexto = {'personas': persona, 'api_version': api_version}
     return render(request, 'adopcion/persona_list.html', contexto)
+
+
+def persona_detail2(request, api_version, id_mascota):
+    instance = MascotaPersonaListv3()
+    args = {}
+    kwargs = {'pk': id_mascota}
+    persona = instance.list(request=request, *args, **kwargs)
+    persona = json.loads(json.dumps(persona.data))
+    return render(request, 'adopcion/persona_detail.html', {'object': persona[0]})
 
 
 def persona_delete(request,id_persona):

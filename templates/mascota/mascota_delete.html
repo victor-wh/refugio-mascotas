@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 {% block title %} ELIMINAR-MASCOTA {% endblock %}
 {% block content %}
+<h4>MASCOTAS - {{ api_version }}</h4>
 <form action="" method="post">
     {% csrf_token %}
     <h3>¿Desea eliminar el registro de
@@ -14,7 +15,7 @@
     {% if object %}
         {% url 'mascota_listarclase' %}
     {% elif mascota %}
-        {% url 'mascota_listarfuncion' %}
+        {% url 'mascota_listarfuncion' api_version %}
     {% endif %}">Cancelar</a>
 </form>
 {% endblock %}

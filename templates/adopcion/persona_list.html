@@ -39,7 +39,7 @@
 
 			<td>
 				<a class="btn btn-danger" href=" {% url 'persona_eliminarfuncion' persona.id %}">Eliminar</a>
-				<a class="btn btn-info" href=" {% url 'persona_detailfuncion' persona.id %}">Detalle</a>
+				<a class="btn btn-info" href=" {% url 'persona_detailfuncion' api_version persona.id %}">Detalle</a>
 			</td>
 		</tr>
 		{% endfor %}
